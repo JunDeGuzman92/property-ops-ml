@@ -19,6 +19,8 @@ requirements.txt
 inference_example.py
 ```
 
+This repo can generate that folder for you.
+
 ## Why Not Publish One Universal Model Immediately?
 
 Property-management data is not universal. Each company has different:
@@ -44,8 +46,10 @@ pip install huggingface_hub
 3. Log in:
 
 ```powershell
-huggingface-cli login
+hf auth login
 ```
+
+Do not paste your token into a public place. Create a token in Hugging Face with write access and paste it only into the local login prompt.
 
 4. Train or export a model artifact:
 
@@ -53,29 +57,40 @@ huggingface-cli login
 python scripts/train_sample_model.py
 ```
 
-5. Create a Hugging Face model repo:
+5. Prepare the Hugging Face upload folder:
 
 ```powershell
-huggingface-cli repo create property-maintenance-priority-baseline --type model
+python scripts/prepare_hf_model_repo.py
 ```
 
-6. Clone the new repo and copy files:
+This creates:
 
-```powershell
-git clone https://huggingface.co/YOUR_USERNAME/property-maintenance-priority-baseline
-copy artifacts\sample_maintenance_model.json property-maintenance-priority-baseline\
-copy requirements.txt property-maintenance-priority-baseline\
+```text
+huggingface/property-maintenance-priority-baseline/
 ```
 
-7. Add a model card as `README.md`.
+6. Upload the folder to Hugging Face:
 
-8. Commit and push:
+Replace `YOUR_HF_USERNAME` with your Hugging Face username.
 
 ```powershell
-cd property-maintenance-priority-baseline
-git add .
-git commit -m "Add baseline property operations model"
-git push
+hf upload YOUR_HF_USERNAME/property-maintenance-priority-baseline huggingface/property-maintenance-priority-baseline .
+```
+
+According to Hugging Face's CLI docs, `hf upload` can upload a whole folder and will create the repo automatically if it does not exist.
+
+7. Open the model page:
+
+```text
+https://huggingface.co/YOUR_HF_USERNAME/property-maintenance-priority-baseline
+```
+
+8. Test the model locally from the upload folder:
+
+```powershell
+cd huggingface/property-maintenance-priority-baseline
+pip install -r requirements.txt
+python inference_example.py
 ```
 
 ## Model Card Language
@@ -90,4 +105,3 @@ Avoid claiming:
 - universal accuracy across all companies
 - production readiness without validation
 - use of private company data
-

@@ -1,0 +1,19 @@
+{
+  "age_days": 4,
+  "closure_days": 0,
+  "is_open": 1,
+  "is_closed": 0,
+  "is_winter": 1,
+  "occupied_unit": 1,
+  "recurrence_count": 2,
+  "asset_age_years": 14,
+  "category_appliance": 0,
+  "category_cleaning": 0,
+  "category_cosmetic": 0,
+  "category_electrical": 0,
+  "category_hvac": 1,
+  "category_life_safety": 0,
+  "category_pest": 0,
+  "category_plumbing": 0,
+  "category_other": 0
+}

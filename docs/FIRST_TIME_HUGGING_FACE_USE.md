@@ -175,3 +175,51 @@ python use_published_model.py
 ```
 
 That confirms you can download your model from Hugging Face and use it locally.
+
+## 9. Use The Model On A Dataset
+
+The Hugging Face bundle includes a dataset scoring script:
+
+```text
+huggingface/property-maintenance-priority-baseline/batch_inference_example.py
+```
+
+Test it locally:
+
+```powershell
+cd huggingface/property-maintenance-priority-baseline
+python batch_inference_example.py
+```
+
+It reads:
+
+```text
+sample_work_orders.csv
+```
+
+and writes:
+
+```text
+scored_work_orders.csv
+```
+
+For your own dataset, provide an input CSV:
+
+```powershell
+python batch_inference_example.py --input your_work_orders.csv --output scored_your_work_orders.csv
+```
+
+The CSV can contain model-ready feature columns, or common raw work-order columns:
+
+- `created_date`
+- `closed_date`
+- `category`
+- `status`
+- `occupied_unit`
+- `recurrence_count`
+- `asset_age_years`
+
+The script transforms those columns into model features, scores each row, and appends:
+
+- `score`
+- `label`

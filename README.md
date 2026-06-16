@@ -123,6 +123,26 @@ inference_example.py
 
 See `docs/HUGGING_FACE_PUBLISHING_GUIDE.md` for a step-by-step guide.
 
+## Using A Published Model On A Dataset
+
+After publishing the maintenance baseline to Hugging Face, score a CSV from this repo with:
+
+```powershell
+python scripts/score_dataset_with_published_model.py
+```
+
+This downloads the model artifact from Hugging Face, converts a work-order CSV into the expected feature matrix, appends `score` and `label`, and writes:
+
+```text
+outputs/scored_work_orders.csv
+```
+
+You can pass another CSV:
+
+```powershell
+python scripts/score_dataset_with_published_model.py --input path\to\your_work_orders.csv --output outputs\your_scored_file.csv
+```
+
 ## Responsible Use
 
 This library supports review, triage, analytics, and decision preparation. It should not be used for automated resident, tenant, or pricing decisions without approved data, validation, governance, and human oversight.
@@ -146,4 +166,3 @@ property-ops-ml/
   tests/
   docs/
 ```
-

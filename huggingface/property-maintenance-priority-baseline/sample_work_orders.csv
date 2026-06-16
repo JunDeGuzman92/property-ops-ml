@@ -1,0 +1,5 @@
+work_order_id,created_date,closed_date,category,status,occupied_unit,recurrence_count,asset_age_years
+WO-HF-001,2026-01-04,,Heat not working in occupied suite,Open,1,2,14
+WO-HF-002,2026-05-03,2026-05-03,Loose cabinet handle,Completed,1,0,3
+WO-HF-003,2026-02-02,,Water leak under kitchen sink,In Progress,1,1,8
+WO-HF-004,2026-05-15,2026-05-17,Window screen repair,Closed,0,0,4

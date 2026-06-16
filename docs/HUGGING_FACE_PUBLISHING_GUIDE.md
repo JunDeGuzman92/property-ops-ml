@@ -17,6 +17,8 @@ README.md
 sample_maintenance_model.json
 requirements.txt
 inference_example.py
+batch_inference_example.py
+sample_work_orders.csv
 ```
 
 This repo can generate that folder for you.

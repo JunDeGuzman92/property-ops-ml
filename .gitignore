@@ -4,9 +4,10 @@ __pycache__/
 .env
 .ipynb_checkpoints/
 artifacts/
+outputs/
+huggingface/**/scored_*.csv
 dist/
 build/
 *.egg-info/
 .DS_Store
 Thumbs.db
-

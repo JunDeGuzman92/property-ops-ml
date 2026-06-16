@@ -77,6 +77,37 @@ Expected output:
 
 Exact score may vary if the artifact is regenerated.
 
+## Score A Dataset
+
+The model can score a CSV dataset when the file has either:
+
+1. model-ready feature columns, or
+2. common work-order columns such as `created_date`, `closed_date`, `category`, `status`, `occupied_unit`, `recurrence_count`, and `asset_age_years`.
+
+Run the bundled batch example:
+
+```bash
+python batch_inference_example.py
+```
+
+This reads:
+
+```text
+sample_work_orders.csv
+```
+
+and writes:
+
+```text
+scored_work_orders.csv
+```
+
+To score your own CSV:
+
+```bash
+python batch_inference_example.py --input your_work_orders.csv --output scored_your_work_orders.csv
+```
+
 ## Responsible Use
 
 This model is for review support and learning. Any real deployment should include

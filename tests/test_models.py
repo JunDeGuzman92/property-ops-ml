@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from property_ops_ml.evaluation import binary_classification_metrics, stratified_train_test_split_indices
-from property_ops_ml.inference import score_record_from_artifact
+from property_ops_ml.inference import score_frame_from_artifact, score_record_from_artifact
 from property_ops_ml.models import LogisticRegressionGD, StandardScaler, load_model_artifact, save_model_artifact
 
 
@@ -47,6 +47,18 @@ class ModelTests(unittest.TestCase):
             loaded = load_model_artifact(path)
             result = score_record_from_artifact({"x": 1.0}, loaded)
         self.assertEqual(result["label"], "review")
+
+    def test_frame_inference_scores_multiple_rows(self):
+        payload = {
+            "feature_names": ["x"],
+            "weights": [2.0],
+            "bias": -0.5,
+            "scaler": {"mean": [0.0], "scale": [1.0]},
+        }
+        import pandas as pd
+
+        result = score_frame_from_artifact(pd.DataFrame({"x": [1.0, -1.0]}), payload)
+        self.assertEqual(list(result["label"]), ["review", "standard"])
 
 
 if __name__ == "__main__":
